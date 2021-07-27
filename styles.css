@@ -30,13 +30,15 @@ main {
 .new-activity-section {
   margin-right: .25rem;
   padding: 2rem;
+  padding-top: 1rem;
   width: 100%;
-
 }
 
 form {
   background-color: #46424D;
   padding: 2rem 6rem;
+  font-size: 1.5rem;
+  font-weight: 400;
 }
 
 form > div {
@@ -44,19 +46,26 @@ form > div {
   padding: 1rem;
 }
 
+.select-category-div {
+  padding-bottom: 0;
+}
+
 .activity-category-div {
   display: flex;
   justify-content: space-between;
+  padding-top: 0;
+  padding-bottom: 2.5rem;
 }
 
 .activity-category-div > input {
-  width: 15rem;
-  height: 6.5rem;
+  width: 13.5rem;
+  height: 6rem;
   background: none;
   border: .1rem solid #CBC9CF;
   border-radius: .4rem;
   color: #CBC9CF;
   padding-top: 3rem;
+  font-size: 1.5rem;
 }
 
 #study-button {
@@ -84,6 +93,15 @@ form > div {
   flex-direction: column;
 }
 
+#task-description,
+#minutes,
+#seconds {
+  background-color: #46424D;
+  border: 0;
+  border-bottom: 1px solid #CBC9CF;
+  line-height: 3rem;
+}
+
 .minutes-seconds-div {
   display: flex;
   flex-direction: row;
@@ -92,10 +110,28 @@ form > div {
 
 .minutes-div,
 .seconds-div {
-  width: 30%;
+  width: 40%;
 }
 
 .start-button-div {
   display: flex;
   justify-content: flex-end;
+}
+
+#start-activity-button {
+  border: 0;
+  border-radius: 4px;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  color: #46424D;
+}
+
+.past-activities-section {
+  width: 45%;
+  padding: 2rem;
+  padding-top: 1rem;
+}
+
+.default-activity-text {
+  text-align: center;
 }
