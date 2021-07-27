@@ -11,30 +11,38 @@
       <h1>INTENTION TIMER</h1>
     </header>
     <main>
-      <section class="new-activity">
+      <section class="new-activity-section">
         <h2>New Activity</h2>
         <form>
           <div>
             <p>Select a category:</p>
-            <input type="button" value="Study"/>
-            <input type="button" value="Meditate"/>
-            <input type="button" value="Exercise"/>
           </div>
-          <div>
+          <div class="activity-category-div">
+            <input type="button" id="study-button" value="Study"/>
+            <input type="button" id="meditate-button" value="Meditate"/>
+            <input type="button" id="exercise-button" value="Exercise"/>
+          </div>
+          <div class="task-description-div">
             <label for="task-description">What would you like to accomplish during this time?</label>
             <input type="text" id="task-description"/>
           </div>
-          <div>
-            <label for="minutes">Minutes</label>
-            <input type="text" id="minutes"/>
-            <label for="seconds">Seconds</label>
-            <input type="text" id="seconds"/>
-            <input type="submit">START ACTIVITY</input>
+          <div class="minutes-seconds-div">
+            <div class="minutes-div">
+              <label for="minutes">Minutes</label>
+              <input type="text" id="minutes"/>
+            </div>
+            <div class="seconds-div">
+              <label for="seconds">Seconds</label>
+              <input type="text" id="seconds"/>
+            </div>
           </div>
+            <div class="start-button-div">
+              <input type="submit" value="START ACTIVITY"/>
+            </div>
         </form>
       </section>
 
-      <section class="past-activities">
+      <section class="past-activities-section">
         <h2>Past Activities</h2>
         <article class="default-text">
           <p>You haven't logged any activities yet.</p>

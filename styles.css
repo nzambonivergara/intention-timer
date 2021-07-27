@@ -1,0 +1,101 @@
+html {
+  font-size: 1vw;
+}
+
+body {
+  background-color: #46424D;
+  color: #cbc9cf;
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+header {
+  background-color: #46424D;
+  display: flex;
+  justify-content: center;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+}
+
+.new-activity-section,
+.past-activities-section {
+  background-color: #2B2733;
+}
+
+.new-activity-section {
+  margin-right: .25rem;
+  padding: 2rem;
+  width: 100%;
+
+}
+
+form {
+  background-color: #46424D;
+  padding: 2rem 6rem;
+}
+
+form > div {
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.activity-category-div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.activity-category-div > input {
+  width: 15rem;
+  height: 6.5rem;
+  background: none;
+  border: .1rem solid #CBC9CF;
+  border-radius: .4rem;
+  color: #CBC9CF;
+  padding-top: 3rem;
+}
+
+#study-button {
+  background: url(./assets/study.svg) no-repeat;
+  background-position: 50% 25%;
+  background-size: 2rem;
+}
+
+#meditate-button {
+  background: url(./assets/meditate.svg) no-repeat center;
+  background-position: 50% 25%;
+  background-size: 2rem;
+}
+
+#exercise-button {
+  background: url(./assets/exercise.svg) no-repeat center;
+  background-position: 50% 25%;
+  background-size: 2rem;
+}
+
+.task-description-div,
+.minutes-div,
+.seconds-div {
+  display: flex;
+  flex-direction: column;
+}
+
+.minutes-seconds-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.minutes-div,
+.seconds-div {
+  width: 30%;
+}
+
+.start-button-div {
+  display: flex;
+  justify-content: flex-end;
+}
