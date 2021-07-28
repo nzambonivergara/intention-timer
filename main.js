@@ -1,8 +1,3 @@
-// Activity buttons should change color when clicked
-// Create variables for each of our activity buttons
-  // querySelectorAll returns array
-  // iterate through each element
-  // if checked, then add relevant classList to change color
 // Create classes with image/color for each button
   // Meditate: #C278FD
   // Exercise: #FD8078
@@ -12,17 +7,23 @@
 var studyButton = document.querySelector(".study-button");
 var meditateButton = document.querySelector(".meditate-button");
 var exerciseButton = document.querySelector(".exercise-button");
-
 var activityButtons = document.querySelectorAll("div.activity-category-div > input");
+var minutesInput = document.getElementById("minutes");
+var secondsInput = document.getElementById("seconds");
 
 // Event Handlers
 // studyButton.addEventListener("click", activateStudy);
 // meditateButton.addEventListener("click", activateMeditate);
 // exerciseButton.addEventListener("click", activateExercise);
-
 for (var i = 0; i < activityButtons.length; i++) {
   activityButtons[i].addEventListener("click", activateButton);
-}
+};
+minutesInput.addEventListener("keydown", preventInvalidCharacters);
+secondsInput.addEventListener("keydown", preventInvalidCharacters);
+
+// Global vriables
+var invalidCharacters = [ "-", "+", "e", " " ];
+
 
 // Functions
 function removeActivation() {
@@ -42,6 +43,11 @@ function activateButton(event) {
   }
 }
 
+function preventInvalidCharacters(event) {
+  if (invalidCharacters.includes(event.key)) {
+    event.preventDefault();
+  }
+}
 
 // function activateStudy() {
 //   studyButton.classList.add("study-button-clicked");
@@ -54,6 +60,13 @@ function activateButton(event) {
 // function activateExercise() {
 //   exerciseButton.classList.add("exercise-button-clicked");
 // }
+
+
+// Change the input type to number
+// Target the minutes and seconds input fields
+// Declare an array of invalid characters
+// Add event listener to input fields that prevents those characters from being added
+
 
 
 function logTarget(event) {
