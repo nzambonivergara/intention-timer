@@ -60,30 +60,59 @@ form > div {
 .activity-category-div > input {
   width: 13.5rem;
   height: 6rem;
-  background: none;
-  border: .1rem solid #CBC9CF;
+  /* border: .1rem solid #CBC9CF; */
   border-radius: .4rem;
-  color: #CBC9CF;
+  /* color: #CBC9CF; */
   padding-top: 3rem;
   font-size: 1.5rem;
 }
 
-#study-button {
+.study-button {
   background: url(./assets/study.svg) no-repeat;
   background-position: 50% 25%;
   background-size: 2rem;
+  border: .1rem solid #CBC9CF;
+  color: #CBC9CF;
 }
 
-#meditate-button {
+.study-button-clicked {
+  background: url(./assets/study-active.svg) no-repeat;
+  background-position: 50% 25%;
+  background-size: 2rem;
+  border: .1rem solid #B3FD78;
+  color: #B3FD78;
+}
+
+.meditate-button {
   background: url(./assets/meditate.svg) no-repeat center;
   background-position: 50% 25%;
   background-size: 2rem;
+  border: .1rem solid #CBC9CF;
+  color: #CBC9CF;
 }
 
-#exercise-button {
+.meditate-button-clicked {
+  background: url(./assets/meditate-active.svg) no-repeat;
+  background-position: 50% 25%;
+  background-size: 2rem;
+  border: .1rem solid #C278FD;
+  color: #C278FD;
+}
+
+.exercise-button {
   background: url(./assets/exercise.svg) no-repeat center;
   background-position: 50% 25%;
   background-size: 2rem;
+  border: .1rem solid #CBC9CF;
+  color: #CBC9CF;
+}
+
+.exercise-button-clicked {
+  background: url(./assets/exercise-active.svg) no-repeat;
+  background-position: 50% 25%;
+  background-size: 2rem;
+  border: .1rem solid #FD8078;
+  color: #FD8078;
 }
 
 .task-description-div,
