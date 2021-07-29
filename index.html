@@ -24,16 +24,19 @@
           </div>
           <div class="task-description-div">
             <label for="task-description">What would you like to accomplish during this time?</label>
-            <input type="text" class="form-input-fields" id="task-description"/>
+            <input type="text" class="form-input-fields" name="description" id="task-description"/>
+            <p class="warning"></p>
           </div>
           <div class="minutes-seconds-div">
             <div class="minutes-div">
               <label for="minutes">Minutes</label>
-              <input type="number" min="0" class="form-input-fields" id="minutes"/>
+              <input type="number" min="0" class="form-input-fields" name="value" id="minutes"/>
+              <p class="warning"></p>
             </div>
             <div class="seconds-div">
               <label for="seconds">Seconds</label>
-              <input type="number" min="0" max="59" class="form-input-fields" id="seconds"/>
+              <input type="number" min="0" max="59" class="form-input-fields" name="value" id="seconds"/>
+              <p class="warning"></p>
             </div>
           </div>
             <div class="start-button-div">
