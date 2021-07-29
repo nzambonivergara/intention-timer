@@ -122,15 +122,28 @@ form > div {
   flex-direction: column;
 }
 
-#task-description,
-#minutes,
-#seconds {
+.form-input-fields {
   background-color: #46424D;
   border: 0;
   border-bottom: 1px solid #CBC9CF;
   line-height: 3rem;
   color: white;
   font-size: 1.5rem;
+}
+
+.error-line-color {
+  border-bottom: 1px solid #EFB7EC;
+}
+
+.error-message {
+  color: #EFB7EC;
+  margin-top: 0;
+}
+
+#warning {
+  height: 1.5rem;
+  width: 1.5rem;
+  margin-right: 5px;
 }
 
 .minutes-seconds-div {
@@ -165,4 +178,8 @@ form > div {
 
 .default-activity-text {
   text-align: center;
+}
+
+.hidden {
+  display: none;
 }
