@@ -14,8 +14,12 @@ var secondsInput = document.getElementById("seconds");
 var inputFields = [ taskDescriptionInput, minutesInput, secondsInput ];
 var formSubmit = document.querySelector("form");
 
+var activityForm = document.querySelector('.activity-form');
+var activityHeader = document.querySelector('.activity-header');
 var errorMessage = document.querySelector(".error-message");
 var warningText = document.querySelectorAll('.warning');
+var timerDisplay = document.querySelector('.timer-display');
+var timerDescription = document.querySelector('.timer-description');
 
 // Event Handlers
 // studyButton.addEventListener("click", activateStudy);

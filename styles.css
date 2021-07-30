@@ -22,9 +22,22 @@ main {
   flex-direction: row;
 }
 
+div {
+  padding: 0px;
+  margin: 0px;
+}
+
+.activity-form {
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  margin: 0px;
+  border-radius: 5px;
+}
+
 .new-activity-section,
 .past-activities-section {
   background-color: #2B2733;
+  height: 50rem;
 }
 
 .new-activity-section {
@@ -42,8 +55,8 @@ form {
 }
 
 form > div {
-  margin: 1rem;
-  padding: 1rem;
+  margin: 0.5rem;
+  padding: 0.5rem;
 }
 
 .select-category-div {
@@ -168,6 +181,41 @@ form > div {
   padding: 1rem 2rem;
   font-size: 1.5rem;
   color: #46424D;
+}
+
+.timer-display {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 40rem;
+}
+
+.timer-description {
+  margin: 0px;
+}
+
+.timer {
+  font-size: 7rem;
+  font-weight: bolder;
+  margin: 0px;
+  color: white;
+}
+
+.start-timer {
+  height: 20rem;
+  width: 20rem;
+  background: none;
+  border: 3px solid #C278FD;
+  border-radius: 50%;
+  margin-top: 3rem;
+  color: white;
+  font-size: 2rem;
+  font-weight: lighter;
+}
+
+.start {
+  color: #cbc9cf;
 }
 
 .past-activities-section {

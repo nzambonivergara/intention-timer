@@ -3,7 +3,7 @@
 <html lang="en" dir="ltr">
   <head>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
     <title>Intention Timer</title>
   </head>
   <body>
@@ -12,8 +12,8 @@
     </header>
     <main>
       <section class="new-activity-section">
-        <h2>New Activity</h2>
-        <form>
+        <h2 class="activity-header">New Activity</h2>
+        <form class="activity-form">
           <div class="select-category-div">
             <p>Select a category:</p>
           </div>
@@ -42,6 +42,11 @@
             <div class="start-button-div">
               <input type="submit" value="START ACTIVITY" id="start-activity-button"/>
             </div>
+        </form>
+        <form class="timer-display hidden">
+          <h2 class="timer-description">Placeholder</h2>
+          <h1 class="timer">5:00</h1>
+          <button class="start-timer"><h1 class="start">START</h1></button>
         </form>
       </section>
 
