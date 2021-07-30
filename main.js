@@ -7,6 +7,7 @@ var studyButton = document.querySelector(".study-button");
 var meditateButton = document.querySelector(".meditate-button");
 var exerciseButton = document.querySelector(".exercise-button");
 var activityButtons = document.querySelectorAll("div.activity-category-div > input");
+// var startActivityButton = document.querySelector('#start-activity-button')
 
 var taskDescriptionInput = document.getElementById("task-description");
 var minutesInput = document.getElementById("minutes");
@@ -18,6 +19,7 @@ var activityForm = document.querySelector('.activity-form');
 var activityHeader = document.querySelector('.activity-header');
 var errorMessage = document.querySelector(".error-message");
 var warningText = document.querySelectorAll('.warning');
+var categoryWarning = document.querySelector('.category-warning');
 var timerDisplay = document.querySelector('.timer-display');
 var timerDescription = document.querySelector('.timer-description');
 
@@ -36,6 +38,7 @@ for (var i = 0; i < inputFields.length; i++) {
 minutesInput.addEventListener("keydown", preventInvalidCharacters);
 secondsInput.addEventListener("keydown", preventInvalidCharacters);
 formSubmit.addEventListener("submit", submitForm);
+// startActivityButton.addEventListener('click', showTimerView);
 
 // Global vriables
 var invalidCharacters = [ "-", "+", "e", " " ];
@@ -83,13 +86,16 @@ function submitForm() {
   event.preventDefault();
   for (var i=0; i < inputFields.length; i++) {
     if (!getCategory()) {
+      categoryWarning.innerHTML = `<img src="./assets/warning.svg" alt="warning sign" id="warning"> A category is required.`;
       return;
     } else if (!inputFields[i].value) {
+      categoryWarning.innerHTML = ``;
       warningText[i].innerHTML = `<img src="./assets/warning.svg" alt="warning sign" id="warning"> A ${inputFields[i].name} is required.`;
-      return;
+      // return;
     } else {
       var newActivity = new Activity(getCategory(), taskDescriptionInput.value, minutesInput.value, secondsInput.value);
       console.log(newActivity);
+      showTimerView();
       return;
     }
   }
@@ -104,7 +110,10 @@ function getCategory() {
   return false;
 }
 
-
+function showTimerView() {
+  activityForm.classList.toggle('hidden');
+  timerDisplay.classList.toggle('hidden');
+}
 
 
 
