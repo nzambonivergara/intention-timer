@@ -1,7 +1,9 @@
+/* Document */
 html {
   font-size: 1vw;
 }
 
+/* Entire Body */
 body {
   background-color: #46424D;
   color: #cbc9cf;
@@ -11,36 +13,26 @@ body {
   margin: 0;
 }
 
+/* Header */
 header {
   background-color: #46424D;
   display: flex;
   justify-content: center;
 }
 
+/* Entire Main Container */
 main {
   display: flex;
   flex-direction: row;
 }
-
-div {
-  padding: 0px;
-  margin: 0px;
-}
-
-.activity-form {
-  padding-top: 1rem;
-  padding-bottom: 2rem;
-  margin: 0px;
-  border-radius: 5px;
-}
-
+  /* Main view feft and right container styling */
 .new-activity-section,
 .past-activities-section {
   background-color: #2B2733;
   height: auto;
   padding-bottom: 2rem;
 }
-
+  /* Left side container */
 .new-activity-section {
   margin-right: .25rem;
   padding: 2rem;
@@ -48,7 +40,11 @@ div {
   width: 100%;
 }
 
-form {
+/* Entire form */
+.activity-form,
+.timer-display {
+  margin: 0px;
+  border-radius: 1%;
   background-color: #46424D;
   padding: 2rem 6rem;
   font-size: 1.5rem;
@@ -87,13 +83,18 @@ form > div {
   font-size: 1.5rem;
 }
 
+input[type="button"],
+input[type="submit"] {
+  cursor: pointer;
+}
+
 .study-button {
   background: url(./assets/study.svg) no-repeat;
   background-position: 50% 25%;
   background-size: 2rem;
   border: .1rem solid #CBC9CF;
   color: #CBC9CF;
-  cursor: pointer;
+  : pointer; */
 }
 
 .study-button-clicked {
@@ -102,7 +103,6 @@ form > div {
   background-size: 2rem;
   border: .1rem solid #B3FD78;
   color: #B3FD78;
-  cursor: pointer;
 }
 
 .meditate-button {
@@ -111,7 +111,6 @@ form > div {
   background-size: 2rem;
   border: .1rem solid #CBC9CF;
   color: #CBC9CF;
-  cursor: pointer;
 }
 
 .meditate-button-clicked {
@@ -120,7 +119,6 @@ form > div {
   background-size: 2rem;
   border: .1rem solid #C278FD;
   color: #C278FD;
-  cursor: pointer;
 }
 
 .exercise-button {
@@ -129,7 +127,6 @@ form > div {
   background-size: 2rem;
   border: .1rem solid #CBC9CF;
   color: #CBC9CF;
-  cursor: pointer;
 }
 
 .exercise-button-clicked {
@@ -138,7 +135,6 @@ form > div {
   background-size: 2rem;
   border: .1rem solid #FD8078;
   color: #FD8078;
-  cursor: pointer;
 }
 
 .task-description-div,
@@ -151,25 +147,25 @@ form > div {
 .form-input-fields {
   background-color: #46424D;
   border: 0;
-  border-bottom: 1px solid #CBC9CF;
+  border-bottom: .1rem solid #CBC9CF;
   line-height: 3rem;
   color: white;
   font-size: 1.5rem;
 }
 
 .error-line-color {
-  border-bottom: 1px solid #EFB7EC;
+  border-bottom: .1rem solid #EFB7EC;
 }
 
 .error-message {
   color: #EFB7EC;
-  margin-top: 0;
+  /* margin-top: 0; */
 }
 
 #warning {
   height: 1.5rem;
   width: 1.5rem;
-  margin-right: 5px;
+  margin-right: .5rem;
 }
 
 .minutes-seconds-div {
@@ -194,7 +190,6 @@ form > div {
   padding: 1rem 2rem;
   font-size: 1.5rem;
   color: #46424D;
-  cursor: pointer;
 }
 
 .timer-display {
@@ -226,7 +221,6 @@ form > div {
   color: white;
   font-size: 2rem;
   font-weight: lighter;
-  cursor: pointer;
 }
 
 .start {
