@@ -7,7 +7,7 @@ var studyButton = document.querySelector(".study-button");
 var meditateButton = document.querySelector(".meditate-button");
 var exerciseButton = document.querySelector(".exercise-button");
 var activityButtons = document.querySelectorAll("div.activity-category-div > input");
-// var startActivityButton = document.querySelector('#start-activity-button')
+var startActivityButton = document.querySelector('#start-activity-button')
 
 var taskDescriptionInput = document.getElementById("task-description");
 var minutesInput = document.getElementById("minutes");
@@ -22,6 +22,8 @@ var warningText = document.querySelectorAll('.warning');
 var categoryWarning = document.querySelector('.category-warning');
 var timerDisplay = document.querySelector('.timer-display');
 var timerDescription = document.querySelector('.timer-description');
+var timer = document.querySelector(".timer");
+var startTimer = document.querySelector(".start-timer");
 
 // Event Handlers
 // studyButton.addEventListener("click", activateStudy);
@@ -104,7 +106,7 @@ function submitForm() {
   if (checkFields()) {
     var newActivity = new Activity(getCategory(), taskDescriptionInput.value, minutesInput.value, secondsInput.value);
     console.log(newActivity);
-    showTimerView();
+    showTimerView(newActivity);
   }
 }
 
@@ -112,15 +114,24 @@ function submitForm() {
 function getCategory() {
   for (var i = 0; i < activityButtons.length; i++) {
     if (activityButtons[i].checked) {
+      startTimer.classList.add(activityButtons[i].value.toLowerCase());
+      // console.log(activityButtons[i].value.toLowerCase());
       return activityButtons[i].value;
     }
   }
   return false;
 }
 
-function showTimerView() {
+function showTimerView(newActivity) {
   formSubmit.classList.add('hidden');
   timerDisplay.classList.remove('hidden');
+  timerDescription.innerText = newActivity.description;
+
+  if (newActivity.seconds < 10) {
+    timer.innerText = `${newActivity.minutes}:0${newActivity.seconds}`;
+  } else {
+    timer.innerText = `${newActivity.minutes}:${newActivity.seconds}`;
+  }
 }
 
 
