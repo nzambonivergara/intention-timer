@@ -82,24 +82,32 @@ function preventInvalidCharacters() {
   }
 };
 
-function submitForm() {
+function checkFields() {
   event.preventDefault();
+  if (!getCategory()) {
+    categoryWarning.innerHTML = `<img src="./assets/warning.svg" alt="warning sign" id="warning"> A category is required.`;
+    return false;
+  }
   for (var i=0; i < inputFields.length; i++) {
-    if (!getCategory()) {
-      categoryWarning.innerHTML = `<img src="./assets/warning.svg" alt="warning sign" id="warning"> A category is required.`;
-      return;
-    } else if (!inputFields[i].value) {
+    if (!inputFields[i].value) {
       categoryWarning.innerHTML = ``;
-      warningText[i].innerHTML = `<img src="./assets/warning.svg" alt="warning sign" id="warning"> A ${inputFields[i].name} is required.`;
-      // return;
-    } else {
-      var newActivity = new Activity(getCategory(), taskDescriptionInput.value, minutesInput.value, secondsInput.value);
-      console.log(newActivity);
-      showTimerView();
-      return;
+      warningText[i].innerHTML = `
+        <img src="./assets/warning.svg" alt="warning sign" id="warning"> A ${inputFields[i].name} is required.
+      `;
+      return false;
     }
   }
+  return true;
 }
+
+function submitForm() {
+  if (checkFields()) {
+    var newActivity = new Activity(getCategory(), taskDescriptionInput.value, minutesInput.value, secondsInput.value);
+    console.log(newActivity);
+    showTimerView();
+  }
+}
+
 
 function getCategory() {
   for (var i = 0; i < activityButtons.length; i++) {
@@ -111,8 +119,8 @@ function getCategory() {
 }
 
 function showTimerView() {
-  activityForm.classList.toggle('hidden');
-  timerDisplay.classList.toggle('hidden');
+  formSubmit.classList.add('hidden');
+  timerDisplay.classList.remove('hidden');
 }
 
 
