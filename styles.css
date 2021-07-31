@@ -105,6 +105,10 @@ input[type="submit"] {
   color: #B3FD78;
 }
 
+.study {
+  border: 3px solid #B3FD78;
+}
+
 .meditate-button {
   background: url(./assets/meditate.svg) no-repeat center;
   background-position: 50% 25%;
@@ -121,6 +125,10 @@ input[type="submit"] {
   color: #C278FD;
 }
 
+.meditate {
+  border: 3px solid #C278FD;
+}
+
 .exercise-button {
   background: url(./assets/exercise.svg) no-repeat center;
   background-position: 50% 25%;
@@ -135,6 +143,10 @@ input[type="submit"] {
   background-size: 2rem;
   border: .1rem solid #FD8078;
   color: #FD8078;
+}
+
+.exercise {
+  border: 3px solid #FD8078;
 }
 
 .task-description-div,
@@ -215,7 +227,7 @@ input[type="submit"] {
   height: 20rem;
   width: 20rem;
   background: none;
-  border: 3px solid #C278FD;
+  /* border: 3px solid #C278FD; */
   border-radius: 50%;
   margin-top: 3rem;
   color: white;
