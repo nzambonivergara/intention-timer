@@ -7,6 +7,7 @@ var studyButton = document.querySelector(".study-button");
 var meditateButton = document.querySelector(".meditate-button");
 var exerciseButton = document.querySelector(".exercise-button");
 var activityButtons = document.querySelectorAll("div.activity-category-div > input");
+var startActivityButton = document.querySelector('#start-activity-button')
 
 var taskDescriptionInput = document.getElementById("task-description");
 var minutesInput = document.getElementById("minutes");
@@ -14,8 +15,15 @@ var secondsInput = document.getElementById("seconds");
 var inputFields = [ taskDescriptionInput, minutesInput, secondsInput ];
 var formSubmit = document.querySelector("form");
 
+var activityForm = document.querySelector('.activity-form');
+var activityHeader = document.querySelector('.activity-header');
 var errorMessage = document.querySelector(".error-message");
 var warningText = document.querySelectorAll('.warning');
+var categoryWarning = document.querySelector('.category-warning');
+var timerDisplay = document.querySelector('.timer-display');
+var timerDescription = document.querySelector('.timer-description');
+var timer = document.querySelector(".timer");
+var startTimer = document.querySelector(".start-timer");
 
 // Event Handlers
 // studyButton.addEventListener("click", activateStudy);
@@ -32,6 +40,7 @@ for (var i = 0; i < inputFields.length; i++) {
 minutesInput.addEventListener("keydown", preventInvalidCharacters);
 secondsInput.addEventListener("keydown", preventInvalidCharacters);
 formSubmit.addEventListener("submit", submitForm);
+// startActivityButton.addEventListener('click', showTimerView);
 
 // Global vriables
 var invalidCharacters = [ "-", "+", "e", " " ];
@@ -75,32 +84,55 @@ function preventInvalidCharacters() {
   }
 };
 
-function submitForm() {
+function checkFields() {
   event.preventDefault();
+  if (!getCategory()) {
+    categoryWarning.innerHTML = `<img src="./assets/warning.svg" alt="warning sign" id="warning"> A category is required.`;
+    return false;
+  }
   for (var i=0; i < inputFields.length; i++) {
-    if (!getCategory()) {
-      return;
-    } else if (!inputFields[i].value) {
-      warningText[i].innerHTML = `<img src="./assets/warning.svg" alt="warning sign" id="warning"> A ${inputFields[i].name} is required.`;
-      return;
-    } else {
-      var newActivity = new Activity(getCategory(), taskDescriptionInput.value, minutesInput.value, secondsInput.value);
-      console.log(newActivity);
-      return;
+    if (!inputFields[i].value) {
+      categoryWarning.innerHTML = ``;
+      warningText[i].innerHTML = `
+        <img src="./assets/warning.svg" alt="warning sign" id="warning"> A ${inputFields[i].name} is required.
+      `;
+      return false;
     }
   }
+  return true;
 }
+
+function submitForm() {
+  if (checkFields()) {
+    var newActivity = new Activity(getCategory(), taskDescriptionInput.value, minutesInput.value, secondsInput.value);
+    console.log(newActivity);
+    showTimerView(newActivity);
+  }
+}
+
 
 function getCategory() {
   for (var i = 0; i < activityButtons.length; i++) {
     if (activityButtons[i].checked) {
+      startTimer.classList.add(activityButtons[i].value.toLowerCase());
+      // console.log(activityButtons[i].value.toLowerCase());
       return activityButtons[i].value;
     }
   }
   return false;
 }
 
+function showTimerView(newActivity) {
+  formSubmit.classList.add('hidden');
+  timerDisplay.classList.remove('hidden');
+  timerDescription.innerText = newActivity.description;
 
+  if (newActivity.seconds < 10) {
+    timer.innerText = `${newActivity.minutes}:0${newActivity.seconds}`;
+  } else {
+    timer.innerText = `${newActivity.minutes}:${newActivity.seconds}`;
+  }
+}
 
 
 
