@@ -227,16 +227,20 @@ input[type="submit"] {
   height: 20rem;
   width: 20rem;
   background: none;
-  /* border: 3px solid #C278FD; */
   border-radius: 50%;
   margin-top: 3rem;
   color: white;
   font-size: 2rem;
   font-weight: lighter;
+  cursor: pointer;
 }
 
 .start {
   color: #cbc9cf;
+}
+
+.start:hover {
+  color: white;
 }
 
 .past-activities-section {

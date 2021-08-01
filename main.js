@@ -40,11 +40,14 @@ for (var i = 0; i < inputFields.length; i++) {
 minutesInput.addEventListener("keydown", preventInvalidCharacters);
 secondsInput.addEventListener("keydown", preventInvalidCharacters);
 formSubmit.addEventListener("submit", submitForm);
+startTimer.addEventListener("click", updateTimer);
+
 // startActivityButton.addEventListener('click', showTimerView);
 
 // Global vriables
 var invalidCharacters = [ "-", "+", "e", " " ];
-
+var newActivity;
+var countdown;
 
 // Functions
 function removeActivation() {
@@ -104,9 +107,9 @@ function checkFields() {
 
 function submitForm() {
   if (checkFields()) {
-    var newActivity = new Activity(getCategory(), taskDescriptionInput.value, minutesInput.value, secondsInput.value);
+    newActivity = new Activity(getCategory(), taskDescriptionInput.value, minutesInput.value, secondsInput.value);
     console.log(newActivity);
-    showTimerView(newActivity);
+    showTimerView();
   }
 }
 
@@ -122,7 +125,7 @@ function getCategory() {
   return false;
 }
 
-function showTimerView(newActivity) {
+function showTimerView() {
   formSubmit.classList.add('hidden');
   timerDisplay.classList.remove('hidden');
   timerDescription.innerText = newActivity.description;
@@ -134,6 +137,11 @@ function showTimerView(newActivity) {
   }
 }
 
+function updateTimer() {
+  countdown = setInterval(function() {
+    newActivity.startTimer()
+  }, 1000);
+};
 
 
 function logTarget(event) {
