@@ -54,6 +54,10 @@ timerDisplay.addEventListener("click", function() {
   logActivity(event);
 })
 
+newActivityButton.addEventListener("click", displayFormView)
+
+activityCards.addEventListener("click", logTarget);
+timerDisplay.addEventListener("click", removeLogButton);
 // startActivityButton.addEventListener('click', showTimerView);
 
 // Global vriables
@@ -141,6 +145,7 @@ function getCategory() {
 function showTimerView() {
   hide(formSubmit);
   show(timerDisplay);
+  startTimer.innerText = "START";
   timerDescription.innerText = newActivity.description;
   activityHeader.innerText = "Current Activity";
   if (newActivity.seconds < 10) {
@@ -162,18 +167,30 @@ function logActivity(event) {
     hide(defaultText);
     hide(timerDisplay);
     show(buttonContainer);
-
-    console.log('true');
     activityCards.innerHTML += `
     <div class="activity-card">
-      <div class="color-marker"></div>
+      <div class="color-marker ${newActivity.category.toLowerCase()}-marker"></div>
       <p class="card-category"><b>${newActivity.category}</b></p>
       <p>${newActivity.timeFrame}</p>
       <p>${newActivity.description}</p>
     </div>
-    `
+    `;
   }
 }
+
+function removeLogButton() {
+  if (event.target.id === "log-activity") {
+  timerDisplay.childNodes[6].remove();
+  }
+}
+
+function displayFormView() {
+  removeActivation();
+  formSubmit.reset();
+  hide(buttonContainer);
+  show(formSubmit);
+}
+
 
 function hide(element) {
   element.classList.add('hidden');
@@ -184,5 +201,5 @@ function show(element) {
 }
 
 function logTarget(event) {
-  console.log(event.target);
+  console.log(event);
 }

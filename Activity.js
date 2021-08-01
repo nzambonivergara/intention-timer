@@ -30,18 +30,7 @@ class Activity {
   }
 
   markComplete() {
-    //  Method is invoked when clicking 'log activity' button
-    //  Timer display should be hidden
-    //  New button appears reading 'Create new activity'
-    //  Header changes to 'Completed Activity'
-      //  Create cards for past activities
 
-      // <div class="activity-card">
-      //   <div class="color-marker"></div>
-      //   <p class="card-category"><b>Category</b></p>
-      //   <p>Time</p>
-      //   <p>Description</p>
-      // </div>
   }
 
   saveToStorage() {
