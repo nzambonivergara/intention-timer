@@ -3,6 +3,11 @@ html {
   font-size: 1vw;
 }
 
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
 /* Entire Body */
 body {
   background-color: #46424D;
@@ -225,6 +230,10 @@ input[type="submit"] {
   color: white;
 }
 
+button {
+  font-family: 'Montserrat', sans-serif;
+}
+
 .start-timer {
   height: 20rem;
   width: 20rem;
@@ -253,6 +262,7 @@ input[type="submit"] {
   border: 0rem;
   border-radius: 4px;
   color: #2B2733;
+  font-size: 1.4rem;
   cursor: pointer;
 }
 
@@ -271,8 +281,23 @@ input[type="submit"] {
 
 .past-activities-section {
   width: 45%;
+  height: 49.3rem;
   padding: 2rem;
-  padding-top: 1rem;
+  padding-top: 0rem;
+  overflow: scroll;
+  position: relative;
+}
+
+.past-activities-text-container {
+  position: fixed;
+  width: 100%;
+  padding-top: .9rem;
+  background-color: #2B2733;
+  z-index: 1;
+}
+
+.past-activities-text {
+  /* position: fixed; */
 }
 
 .default-activity-text {
@@ -282,6 +307,7 @@ input[type="submit"] {
 .activity-cards {
   display: flex;
   flex-direction: column;
+  padding-top: 5.3rem;
 }
 
 .activity-card {
