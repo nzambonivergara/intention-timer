@@ -17,13 +17,21 @@ var formSubmit = document.querySelector("form");
 
 var activityForm = document.querySelector('.activity-form');
 var activityHeader = document.querySelector('.activity-header');
+
 var errorMessage = document.querySelector(".error-message");
 var warningText = document.querySelectorAll('.warning');
 var categoryWarning = document.querySelector('.category-warning');
+
 var timerDisplay = document.querySelector('.timer-display');
 var timerDescription = document.querySelector('.timer-description');
 var timer = document.querySelector(".timer");
 var startTimer = document.querySelector(".start-timer");
+
+var defaultText = document.querySelector(".default-activity-text");
+var activityCards = document.querySelector(".activity-cards");
+
+var newActivityButton = document.querySelector(".create-new-activity");
+var buttonContainer = document.querySelector(".button-container");
 
 // Event Handlers
 // studyButton.addEventListener("click", activateStudy);
@@ -42,12 +50,17 @@ secondsInput.addEventListener("keydown", preventInvalidCharacters);
 formSubmit.addEventListener("submit", submitForm);
 startTimer.addEventListener("click", updateTimer);
 
+timerDisplay.addEventListener("click", function() {
+  logActivity(event);
+})
+
 // startActivityButton.addEventListener('click', showTimerView);
 
 // Global vriables
 var invalidCharacters = [ "-", "+", "e", " " ];
 var newActivity;
 var countdown;
+var heldActivity;
 
 // Functions
 function removeActivation() {
@@ -126,10 +139,10 @@ function getCategory() {
 }
 
 function showTimerView() {
-  formSubmit.classList.add('hidden');
-  timerDisplay.classList.remove('hidden');
+  hide(formSubmit);
+  show(timerDisplay);
   timerDescription.innerText = newActivity.description;
-
+  activityHeader.innerText = "Current Activity";
   if (newActivity.seconds < 10) {
     timer.innerText = `${newActivity.minutes}:0${newActivity.seconds}`;
   } else {
@@ -143,6 +156,32 @@ function updateTimer() {
   }, 1000);
 };
 
+function logActivity(event) {
+  console.log(event);
+  if (event.target.id === "log-activity") {
+    hide(defaultText);
+    hide(timerDisplay);
+    show(buttonContainer);
+
+    console.log('true');
+    activityCards.innerHTML += `
+    <div class="activity-card">
+      <div class="color-marker"></div>
+      <p class="card-category"><b>${newActivity.category}</b></p>
+      <p>${newActivity.timeFrame}</p>
+      <p>${newActivity.description}</p>
+    </div>
+    `
+  }
+}
+
+function hide(element) {
+  element.classList.add('hidden');
+}
+
+function show(element) {
+  element.classList.remove('hidden');
+}
 
 function logTarget(event) {
   console.log(event.target);
