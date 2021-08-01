@@ -78,6 +78,7 @@ function removeActivation() {
 
 function activateButton(event) {
   removeActivation();
+  categoryWarning.innerHTML = ``;
   if (event.target.value === "Study") {
     studyButton.classList.add("study-button-clicked");
     studyButton.checked = true;
@@ -159,6 +160,7 @@ function updateTimer() {
   countdown = setInterval(function() {
     newActivity.startTimer()
   }, 1000);
+  startTimer.disabled = true;
 };
 
 function logActivity(event) {
@@ -167,6 +169,7 @@ function logActivity(event) {
     hide(defaultText);
     hide(timerDisplay);
     show(buttonContainer);
+    activityHeader.innerText = "Completed Activity";
     activityCards.innerHTML += `
     <div class="activity-card">
       <div class="color-marker ${newActivity.category.toLowerCase()}-marker"></div>
@@ -189,6 +192,9 @@ function displayFormView() {
   formSubmit.reset();
   hide(buttonContainer);
   show(formSubmit);
+  startTimer.disabled = false;
+  var startColor = startTimer.classList[1];
+  startTimer.classList.remove(startColor);
 }
 
 
