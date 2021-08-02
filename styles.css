@@ -1,6 +1,7 @@
 /* Document */
 html {
-  font-size: 1vw;
+  font-size: .88vw;
+
 }
 
 ::-webkit-scrollbar {
@@ -280,24 +281,27 @@ button {
 /* ACTIVITY CARDS BEGIN HERE */
 
 .past-activities-section {
+  position: relative;
   width: 45%;
   height: 49.3rem;
   padding: 2rem;
   padding-top: 0rem;
+  border-bottom: 5rem;
   overflow: scroll;
-  position: relative;
 }
 
 .past-activities-text-container {
   position: fixed;
+  height: 4rem;
   width: 100%;
-  padding-top: .9rem;
+  padding-top: 1.1rem;
+  margin-bottom: 1rem;
   background-color: #2B2733;
   z-index: 1;
 }
 
 .past-activities-text {
-  /* position: fixed; */
+  position: fixed;
 }
 
 .default-activity-text {
@@ -309,6 +313,8 @@ button {
   display: flex;
   flex-direction: column;
   padding-top: 5.3rem;
+  padding-bottom: 2rem;
+  background-color: #2B2733;
 }
 
 .activity-card {
