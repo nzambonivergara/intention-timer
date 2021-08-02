@@ -20,17 +20,16 @@ class Activity {
         }
       this.time--;
     } else {
-      console.log(this.time);
-      clearInterval(countdown);
-      startTimer.innerText = "COMPLETE!";
-      startTimer.insertAdjacentHTML("afterend", `<button class="log-activity" id="log-activity">LOG ACTIVITY</button>`);
-      timer.innerText = "Well done!";
-      return;
+      this.markComplete();
     }
   }
 
   markComplete() {
-
+    clearInterval(countdown);
+    startTimer.innerText = "COMPLETE!";
+    startTimer.insertAdjacentHTML("afterend", `<button class="log-activity" id="log-activity">LOG ACTIVITY</button>`);
+    timer.innerText = "Well done!";
+    return;
   }
 
   saveToStorage() {

@@ -34,33 +34,33 @@ var newActivityButton = document.querySelector(".create-new-activity");
 var buttonContainer = document.querySelector(".button-container");
 
 // Event Handlers
-// studyButton.addEventListener("click", activateStudy);
-// meditateButton.addEventListener("click", activateMeditate);
-// exerciseButton.addEventListener("click", activateExercise);
 for (var i = 0; i < activityButtons.length; i++) {
-  activityButtons[i].addEventListener("click", activateButton);
+  activityButtons[i].addEventListener("click", function() {
+    activateButton(event)
+  });
 };
 
 for (var i = 0; i < inputFields.length; i++) {
   inputFields[i].addEventListener("keyup", detectKeyInput);
 };
 
-minutesInput.addEventListener("keydown", preventInvalidCharacters);
-secondsInput.addEventListener("keydown", preventInvalidCharacters);
+minutesInput.addEventListener("keydown", function() {
+    preventInvalidCharacters(event);
+});
+secondsInput.addEventListener("keydown", function() {
+    preventInvalidCharacters(event);
+});
 formSubmit.addEventListener("submit", submitForm);
 startTimer.addEventListener("click", updateTimer);
-
 timerDisplay.addEventListener("click", function() {
-  logActivity(event);
+    logActivity(event);
 })
-
 newActivityButton.addEventListener("click", displayFormView)
+timerDisplay.addEventListener("click", function() {
+    removeLogButton(event);
+});
 
-activityCards.addEventListener("click", logTarget);
-timerDisplay.addEventListener("click", removeLogButton);
-// startActivityButton.addEventListener('click', showTimerView);
-
-// Global vriables
+// Global variables
 var invalidCharacters = [ "-", "+", "e", " " ];
 var newActivity;
 var countdown;
@@ -99,34 +99,33 @@ function detectKeyInput() {
   }
 };
 
-function preventInvalidCharacters() {
+function preventInvalidCharacters(event) {
   if (invalidCharacters.includes(event.key)) {
     event.preventDefault();
   }
 };
 
-function checkFields() {
+function checkFields(event) {
   event.preventDefault();
+  var noErrors = true;
   if (!getCategory()) {
+    noErrors = false;
     categoryWarning.innerHTML = `<img src="./assets/warning.svg" alt="warning sign" id="warning"> A category is required.`;
-    return false;
   }
   for (var i=0; i < inputFields.length; i++) {
     if (!inputFields[i].value) {
-      categoryWarning.innerHTML = ``;
+      noErrors = false;
       warningText[i].innerHTML = `
         <img src="./assets/warning.svg" alt="warning sign" id="warning"> A ${inputFields[i].name} is required.
       `;
-      return false;
     }
   }
-  return true;
+  return noErrors;
 }
 
 function submitForm() {
-  if (checkFields()) {
+  if (checkFields(event)) {
     newActivity = new Activity(getCategory(), taskDescriptionInput.value, minutesInput.value, secondsInput.value);
-    console.log(newActivity);
     showTimerView();
   }
 }
@@ -136,7 +135,6 @@ function getCategory() {
   for (var i = 0; i < activityButtons.length; i++) {
     if (activityButtons[i].checked) {
       startTimer.classList.add(activityButtons[i].value.toLowerCase());
-      // console.log(activityButtons[i].value.toLowerCase());
       return activityButtons[i].value;
     }
   }
@@ -164,7 +162,6 @@ function updateTimer() {
 };
 
 function logActivity(event) {
-  console.log(event);
   if (event.target.id === "log-activity") {
     hide(defaultText);
     hide(timerDisplay);
@@ -181,7 +178,7 @@ function logActivity(event) {
   }
 }
 
-function removeLogButton() {
+function removeLogButton(event) {
   if (event.target.id === "log-activity") {
   timerDisplay.childNodes[6].remove();
   }
@@ -195,6 +192,7 @@ function displayFormView() {
   startTimer.disabled = false;
   var startColor = startTimer.classList[1];
   startTimer.classList.remove(startColor);
+  activityHeader.innerText = "New Activity";
 }
 
 
@@ -204,8 +202,4 @@ function hide(element) {
 
 function show(element) {
   element.classList.remove('hidden');
-}
-
-function logTarget(event) {
-  console.log(event);
 }
