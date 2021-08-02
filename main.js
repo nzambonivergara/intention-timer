@@ -59,6 +59,7 @@ newActivityButton.addEventListener("click", displayFormView)
 timerDisplay.addEventListener("click", function() {
     removeLogButton(event);
 });
+window.addEventListener('load', renderSavedActivities);
 
 // Global variables
 var invalidCharacters = [ "-", "+", "e", " " ];
@@ -163,18 +164,30 @@ function updateTimer() {
 
 function logActivity(event) {
   if (event.target.id === "log-activity") {
-    hide(defaultText);
+    newActivity.saveToStorage();
     hide(timerDisplay);
     show(buttonContainer);
     activityHeader.innerText = "Completed Activity";
-    activityCards.innerHTML += `
-    <div class="activity-card">
-      <div class="color-marker ${newActivity.category.toLowerCase()}-marker"></div>
-      <p class="card-category"><b>${newActivity.category}</b></p>
-      <p>${newActivity.timeFrame}</p>
-      <p>${newActivity.description}</p>
-    </div>
-    `;
+    renderSavedActivities();
+  }
+}
+
+function renderSavedActivities() {
+  if (localStorage.length) {
+    hide(defaultText);
+    activityCards.innerHTML = ``;
+    var keyArray = Object.keys(localStorage);
+    for (var i = 0; i < keyArray.length; i++) {
+      var parsedActivity = JSON.parse(localStorage.getItem(keyArray[i]));
+      activityCards.innerHTML += `
+      <div class="activity-card">
+        <div class="color-marker ${parsedActivity.category.toLowerCase()}-marker"></div>
+        <p class="card-category"><b>${parsedActivity.category}</b></p>
+        <p>${parsedActivity.timeFrame}</p>
+        <p>${parsedActivity.description}</p>
+      </div>
+      `;
+    }
   }
 }
 

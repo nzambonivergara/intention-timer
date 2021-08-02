@@ -33,8 +33,7 @@ class Activity {
   }
 
   saveToStorage() {
-
+    var stringifiedActivity = JSON.stringify(newActivity);
+    localStorage.setItem(this.id.toString(), stringifiedActivity);
   }
 }
-
-module.exports = Activity;
