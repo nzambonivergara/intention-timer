@@ -3,6 +3,11 @@ html {
   font-size: 1vw;
 }
 
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
 /* Entire Body */
 body {
   background-color: #46424D;
@@ -42,7 +47,9 @@ main {
 
 /* Entire form */
 .activity-form,
-.timer-display {
+.timer-display,
+.button-container {
+  height: 40rem;
   margin: 0px;
   border-radius: 1%;
   background-color: #46424D;
@@ -209,7 +216,7 @@ input[type="submit"] {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 40rem;
+  /* height: 40rem; */
 }
 
 .timer-description {
@@ -223,12 +230,16 @@ input[type="submit"] {
   color: white;
 }
 
+button {
+  font-family: 'Montserrat', sans-serif;
+}
+
 .start-timer {
   height: 20rem;
   width: 20rem;
   background: none;
   border-radius: 50%;
-  margin-top: 3rem;
+  margin: 2.5rem;
   color: white;
   font-size: 2rem;
   font-weight: lighter;
@@ -243,14 +254,105 @@ input[type="submit"] {
   color: white;
 }
 
+.log-activity,
+.create-new-activity {
+  width: 20rem;
+  height: 3rem;
+  margin: 1rem;
+  border: 0rem;
+  border-radius: 4px;
+  color: #2B2733;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.button-container {
+  /* width: 100%; */
+  display: flex;
+  justify-content: center;
+}
+
+.create-new-activity {
+  margin-top: 5rem;
+  width: 25rem;
+}
+
+/* ACTIVITY CARDS BEGIN HERE */
+
 .past-activities-section {
   width: 45%;
+  height: 49.3rem;
   padding: 2rem;
-  padding-top: 1rem;
+  padding-top: 0rem;
+  overflow: scroll;
+  position: relative;
+}
+
+.past-activities-text-container {
+  position: fixed;
+  width: 100%;
+  padding-top: .9rem;
+  background-color: #2B2733;
+  z-index: 1;
+}
+
+.past-activities-text {
+  /* position: fixed; */
 }
 
 .default-activity-text {
   text-align: center;
+  padding-top: 5.3rem;
+}
+
+.activity-cards {
+  display: flex;
+  flex-direction: column;
+  padding-top: 5.3rem;
+}
+
+.activity-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 5.2rem;
+  padding: .5rem;
+  background-color: #46424D;
+  border-radius: 4px;
+  margin-bottom: 1.3rem;
+}
+
+.activity-card > p {
+  margin: 0rem;
+  line-height: 1.7rem;
+}
+
+.color-marker {
+  position: absolute;
+  height: 1.9rem;
+  width: .3rem;
+  margin-top: .3rem;
+  margin-right: .3rem;
+  border-radius: 4px;
+  background-color: #C278FD;
+  align-self: flex-end;
+}
+
+.study-marker {
+  background-color: #B3FD78;
+}
+
+.meditate-marker {
+  background-color: #C278FD;
+}
+
+.exercise-marker {
+  background-color: #FD8078;
+}
+
+.card-category {
+  line-height: 2rem;
+  font-weight: 400;
 }
 
 .hidden {

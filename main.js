@@ -17,13 +17,21 @@ var formSubmit = document.querySelector("form");
 
 var activityForm = document.querySelector('.activity-form');
 var activityHeader = document.querySelector('.activity-header');
+
 var errorMessage = document.querySelector(".error-message");
 var warningText = document.querySelectorAll('.warning');
 var categoryWarning = document.querySelector('.category-warning');
+
 var timerDisplay = document.querySelector('.timer-display');
 var timerDescription = document.querySelector('.timer-description');
 var timer = document.querySelector(".timer");
 var startTimer = document.querySelector(".start-timer");
+
+var defaultText = document.querySelector(".default-activity-text");
+var activityCards = document.querySelector(".activity-cards");
+
+var newActivityButton = document.querySelector(".create-new-activity");
+var buttonContainer = document.querySelector(".button-container");
 
 // Event Handlers
 // studyButton.addEventListener("click", activateStudy);
@@ -42,12 +50,21 @@ secondsInput.addEventListener("keydown", preventInvalidCharacters);
 formSubmit.addEventListener("submit", submitForm);
 startTimer.addEventListener("click", updateTimer);
 
+timerDisplay.addEventListener("click", function() {
+  logActivity(event);
+})
+
+newActivityButton.addEventListener("click", displayFormView)
+
+activityCards.addEventListener("click", logTarget);
+timerDisplay.addEventListener("click", removeLogButton);
 // startActivityButton.addEventListener('click', showTimerView);
 
 // Global vriables
 var invalidCharacters = [ "-", "+", "e", " " ];
 var newActivity;
 var countdown;
+var heldActivity;
 
 // Functions
 function removeActivation() {
@@ -61,6 +78,7 @@ function removeActivation() {
 
 function activateButton(event) {
   removeActivation();
+  categoryWarning.innerHTML = ``;
   if (event.target.value === "Study") {
     studyButton.classList.add("study-button-clicked");
     studyButton.checked = true;
@@ -126,10 +144,11 @@ function getCategory() {
 }
 
 function showTimerView() {
-  formSubmit.classList.add('hidden');
-  timerDisplay.classList.remove('hidden');
+  hide(formSubmit);
+  show(timerDisplay);
+  startTimer.innerText = "START";
   timerDescription.innerText = newActivity.description;
-
+  activityHeader.innerText = "Current Activity";
   if (newActivity.seconds < 10) {
     timer.innerText = `${newActivity.minutes}:0${newActivity.seconds}`;
   } else {
@@ -141,9 +160,52 @@ function updateTimer() {
   countdown = setInterval(function() {
     newActivity.startTimer()
   }, 1000);
+  startTimer.disabled = true;
 };
 
+function logActivity(event) {
+  console.log(event);
+  if (event.target.id === "log-activity") {
+    hide(defaultText);
+    hide(timerDisplay);
+    show(buttonContainer);
+    activityHeader.innerText = "Completed Activity";
+    activityCards.innerHTML += `
+    <div class="activity-card">
+      <div class="color-marker ${newActivity.category.toLowerCase()}-marker"></div>
+      <p class="card-category"><b>${newActivity.category}</b></p>
+      <p>${newActivity.timeFrame}</p>
+      <p>${newActivity.description}</p>
+    </div>
+    `;
+  }
+}
+
+function removeLogButton() {
+  if (event.target.id === "log-activity") {
+  timerDisplay.childNodes[6].remove();
+  }
+}
+
+function displayFormView() {
+  removeActivation();
+  formSubmit.reset();
+  hide(buttonContainer);
+  show(formSubmit);
+  startTimer.disabled = false;
+  var startColor = startTimer.classList[1];
+  startTimer.classList.remove(startColor);
+}
+
+
+function hide(element) {
+  element.classList.add('hidden');
+}
+
+function show(element) {
+  element.classList.remove('hidden');
+}
 
 function logTarget(event) {
-  console.log(event.target);
+  console.log(event);
 }
