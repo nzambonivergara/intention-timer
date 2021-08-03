@@ -14,10 +14,10 @@ class Activity {
       this.minutes = Math.floor(this.time / 60);
       this.seconds = this.time % 60;
       if (this.seconds < 10) {
-          timer.innerText = `${this.minutes}:0${this.seconds}`;
-        } else {
-          timer.innerText = `${this.minutes}:${this.seconds}`;
-        }
+        timer.innerText = `${this.minutes}:0${this.seconds}`;
+      } else {
+        timer.innerText = `${this.minutes}:${this.seconds}`;
+      }
       this.time--;
     } else {
       this.markComplete();

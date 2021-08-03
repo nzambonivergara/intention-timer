@@ -1,15 +1,12 @@
-  // Meditate: #C278FD
-  // Exercise: #FD8078
-  // Error: #EFB7EC
 
 // Query Selectors
 var studyButton = document.querySelector(".study-button");
 var meditateButton = document.querySelector(".meditate-button");
 var exerciseButton = document.querySelector(".exercise-button");
 var activityButtons = document.querySelectorAll("div.activity-category-div > input");
-var startActivityButton = document.querySelector('#start-activity-button')
+var startActivityButton = document.querySelector('#startActivityButton')
 
-var taskDescriptionInput = document.getElementById("task-description");
+var taskDescriptionInput = document.getElementById("taskDescription");
 var minutesInput = document.getElementById("minutes");
 var secondsInput = document.getElementById("seconds");
 var inputFields = [ taskDescriptionInput, minutesInput, secondsInput ];
@@ -30,7 +27,7 @@ var startTimer = document.querySelector(".start-timer");
 var defaultText = document.querySelector(".default-activity-text");
 var activityCards = document.querySelector(".activity-cards");
 
-var newActivityButton = document.querySelector(".create-new-activity");
+var newActivityButton = document.querySelector("#newActivityButton");
 var buttonContainer = document.querySelector(".button-container");
 
 // Event Handlers
@@ -65,7 +62,6 @@ window.addEventListener('load', renderSavedActivities);
 var invalidCharacters = [ "-", "+", "e", " " ];
 var newActivity;
 var countdown;
-var heldActivity;
 
 // Functions
 function removeActivation() {
@@ -122,15 +118,14 @@ function checkFields(event) {
     }
   }
   return noErrors;
-}
+};
 
 function submitForm() {
   if (checkFields(event)) {
     newActivity = new Activity(getCategory(), taskDescriptionInput.value, minutesInput.value, secondsInput.value);
     showTimerView();
   }
-}
-
+};
 
 function getCategory() {
   for (var i = 0; i < activityButtons.length; i++) {
@@ -140,7 +135,7 @@ function getCategory() {
     }
   }
   return false;
-}
+};
 
 function showTimerView() {
   hide(formSubmit);
@@ -153,7 +148,7 @@ function showTimerView() {
   } else {
     timer.innerText = `${newActivity.minutes}:${newActivity.seconds}`;
   }
-}
+};
 
 function updateTimer() {
   countdown = setInterval(function() {
@@ -170,7 +165,7 @@ function logActivity(event) {
     activityHeader.innerText = "Completed Activity";
     renderSavedActivities();
   }
-}
+};
 
 function renderSavedActivities() {
   if (localStorage.length) {
@@ -189,13 +184,13 @@ function renderSavedActivities() {
       `;
     }
   }
-}
+};
 
 function removeLogButton(event) {
   if (event.target.id === "log-activity") {
-  timerDisplay.childNodes[6].remove();
+    timerDisplay.childNodes[6].remove();
   }
-}
+};
 
 function displayFormView() {
   removeActivation();
@@ -206,13 +201,12 @@ function displayFormView() {
   var startColor = startTimer.classList[1];
   startTimer.classList.remove(startColor);
   activityHeader.innerText = "New Activity";
-}
-
+};
 
 function hide(element) {
   element.classList.add('hidden');
-}
+};
 
 function show(element) {
   element.classList.remove('hidden');
-}
+};
