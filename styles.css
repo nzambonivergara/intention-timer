@@ -72,7 +72,6 @@ form > div {
   display: flex;
   justify-content: space-between;
   padding-top: 0;
-  /* padding-bottom: 2rem; */
 }
 
 .category-warning {
@@ -84,9 +83,7 @@ form > div {
 .activity-category-div > input {
   width: 13.5rem;
   height: 6rem;
-  /* border: .1rem solid #CBC9CF; */
   border-radius: .4rem;
-  /* color: #CBC9CF; */
   padding-top: 3rem;
   font-size: 1.5rem;
 }
@@ -179,7 +176,6 @@ input[type="submit"] {
 
 .error-message {
   color: #EFB7EC;
-  /* margin-top: 0; */
 }
 
 #warning {
@@ -204,7 +200,7 @@ input[type="submit"] {
   justify-content: flex-end;
 }
 
-#start-activity-button {
+#startActivityButton {
   border: 0;
   border-radius: 4px;
   padding: 1rem 2rem;
@@ -217,7 +213,6 @@ input[type="submit"] {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* height: 40rem; */
 }
 
 .timer-description {
@@ -268,7 +263,6 @@ button {
 }
 
 .button-container {
-  /* width: 100%; */
   display: flex;
   justify-content: center;
 }
