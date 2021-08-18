@@ -26,14 +26,14 @@ class Activity {
 
   markComplete() {
     clearInterval(countdown);
-    startTimer.innerText = "COMPLETE!";
-    startTimer.insertAdjacentHTML("afterend", `<button class="log-activity" id="log-activity">LOG ACTIVITY</button>`);
+    startTimerButton.innerText = "COMPLETE!";
+    startTimerButton.insertAdjacentHTML("afterend", `<button class="log-activity" id="log-activity">LOG ACTIVITY</button>`);
     timer.innerText = "Well done!";
     return;
   }
 
   saveToStorage() {
     var stringifiedActivity = JSON.stringify(newActivity);
-    localStorage.setItem(this.id.toString(), stringifiedActivity);
+    localStorage.setItem(`Activity: ${this.id.toString()}`, stringifiedActivity);
   }
 }

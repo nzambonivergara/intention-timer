@@ -4,7 +4,6 @@ var studyButton = document.querySelector(".study-button");
 var meditateButton = document.querySelector(".meditate-button");
 var exerciseButton = document.querySelector(".exercise-button");
 var activityButtons = document.querySelectorAll("div.activity-category-div > input");
-var startActivityButton = document.querySelector('#startActivityButton')
 
 var taskDescriptionInput = document.getElementById("taskDescription");
 var minutesInput = document.getElementById("minutes");
@@ -12,17 +11,15 @@ var secondsInput = document.getElementById("seconds");
 var inputFields = [ taskDescriptionInput, minutesInput, secondsInput ];
 var formSubmit = document.querySelector("form");
 
-var activityForm = document.querySelector('.activity-form');
 var activityHeader = document.querySelector('.activity-header');
 
-var errorMessage = document.querySelector(".error-message");
 var warningText = document.querySelectorAll('.warning');
 var categoryWarning = document.querySelector('.category-warning');
 
 var timerDisplay = document.querySelector('.timer-display');
 var timerDescription = document.querySelector('.timer-description');
 var timer = document.querySelector(".timer");
-var startTimer = document.querySelector(".start-timer");
+var startTimerButton = document.querySelector(".start-timer-button");
 
 var defaultText = document.querySelector(".default-activity-text");
 var activityCards = document.querySelector(".activity-cards");
@@ -31,30 +28,30 @@ var newActivityButton = document.querySelector("#newActivityButton");
 var buttonContainer = document.querySelector(".button-container");
 
 // Event Handlers
-for (var i = 0; i < activityButtons.length; i++) {
+for (let i = 0; i < activityButtons.length; i++) {
   activityButtons[i].addEventListener("click", function() {
     activateButton(event)
   });
-};
+}
 
-for (var i = 0; i < inputFields.length; i++) {
+for (let i = 0; i < inputFields.length; i++) {
   inputFields[i].addEventListener("keyup", detectKeyInput);
-};
+}
 
 minutesInput.addEventListener("keydown", function() {
-    preventInvalidCharacters(event);
+  preventInvalidCharacters(event);
 });
 secondsInput.addEventListener("keydown", function() {
-    preventInvalidCharacters(event);
+  preventInvalidCharacters(event);
 });
 formSubmit.addEventListener("submit", submitForm);
-startTimer.addEventListener("click", updateTimer);
+startTimerButton.addEventListener("click", updateTimer);
 timerDisplay.addEventListener("click", function() {
-    logActivity(event);
+  logActivity(event);
 })
 newActivityButton.addEventListener("click", displayFormView)
 timerDisplay.addEventListener("click", function() {
-    removeLogButton(event);
+  removeLogButton(event);
 });
 window.addEventListener('load', renderSavedActivities);
 
@@ -71,7 +68,7 @@ function removeActivation() {
   for (var i = 0; i < activityButtons.length; i++) {
     activityButtons[i].classList.remove('checked');
   }
-};
+}
 
 function activateButton(event) {
   removeActivation();
@@ -86,7 +83,7 @@ function activateButton(event) {
     exerciseButton.classList.add("exercise-button-clicked");
     exerciseButton.checked = true;
   }
-};
+}
 
 function detectKeyInput() {
   for (var i = 0; i < inputFields.length; i++) {
@@ -94,13 +91,13 @@ function detectKeyInput() {
       warningText[i].innerHTML = ``;
     }
   }
-};
+}
 
 function preventInvalidCharacters(event) {
   if (invalidCharacters.includes(event.key)) {
     event.preventDefault();
   }
-};
+}
 
 function checkFields(event) {
   event.preventDefault();
@@ -109,38 +106,36 @@ function checkFields(event) {
     noErrors = false;
     categoryWarning.innerHTML = `<img src="./assets/warning.svg" alt="warning sign" id="warning"> A category is required.`;
   }
-  for (var i=0; i < inputFields.length; i++) {
+  for (var i = 0; i < inputFields.length; i++) {
     if (!inputFields[i].value) {
       noErrors = false;
-      warningText[i].innerHTML = `
-        <img src="./assets/warning.svg" alt="warning sign" id="warning"> A ${inputFields[i].name} is required.
-      `;
+      warningText[i].innerHTML = `<img src="./assets/warning.svg" alt="warning sign" id="warning"> A ${inputFields[i].name} is required.`;
     }
   }
   return noErrors;
-};
+}
 
 function submitForm() {
   if (checkFields(event)) {
     newActivity = new Activity(getCategory(), taskDescriptionInput.value, minutesInput.value, secondsInput.value);
     showTimerView();
   }
-};
+}
 
 function getCategory() {
   for (var i = 0; i < activityButtons.length; i++) {
     if (activityButtons[i].checked) {
-      startTimer.classList.add(activityButtons[i].value.toLowerCase());
+      startTimerButton.classList.add(activityButtons[i].value.toLowerCase());
       return activityButtons[i].value;
     }
   }
   return false;
-};
+}
 
 function showTimerView() {
   hide(formSubmit);
   show(timerDisplay);
-  startTimer.innerText = "START";
+  startTimerButton.innerText = "START";
   timerDescription.innerText = newActivity.description;
   activityHeader.innerText = "Current Activity";
   if (newActivity.seconds < 10) {
@@ -148,14 +143,14 @@ function showTimerView() {
   } else {
     timer.innerText = `${newActivity.minutes}:${newActivity.seconds}`;
   }
-};
+}
 
 function updateTimer() {
   countdown = setInterval(function() {
     newActivity.startTimer()
   }, 1000);
-  startTimer.disabled = true;
-};
+  startTimerButton.disabled = true;
+}
 
 function logActivity(event) {
   if (event.target.id === "log-activity") {
@@ -165,7 +160,7 @@ function logActivity(event) {
     activityHeader.innerText = "Completed Activity";
     renderSavedActivities();
   }
-};
+}
 
 function renderSavedActivities() {
   if (localStorage.length) {
@@ -184,29 +179,29 @@ function renderSavedActivities() {
       `;
     }
   }
-};
+}
 
 function removeLogButton(event) {
   if (event.target.id === "log-activity") {
-    timerDisplay.childNodes[6].remove();
+    event.target.remove();
   }
-};
+}
 
 function displayFormView() {
   removeActivation();
   formSubmit.reset();
   hide(buttonContainer);
   show(formSubmit);
-  startTimer.disabled = false;
-  var startColor = startTimer.classList[1];
-  startTimer.classList.remove(startColor);
+  startTimerButton.disabled = false;
+  var startColor = startTimerButton.classList[1];
+  startTimerButton.classList.remove(startColor);
   activityHeader.innerText = "New Activity";
-};
+}
 
 function hide(element) {
   element.classList.add('hidden');
-};
+}
 
 function show(element) {
   element.classList.remove('hidden');
-};
+}

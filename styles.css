@@ -26,6 +26,11 @@ header {
   justify-content: center;
 }
 
+h1,
+h2 {
+  font-weight: 400;
+}
+
 /* Entire Main Container */
 main {
   display: flex;
@@ -165,7 +170,7 @@ input[type="submit"] {
   background-color: #46424D;
   border: 0;
   border-bottom: .1rem solid #CBC9CF;
-  line-height: 3rem;
+  line-height: 2rem;
   color: white;
   font-size: 1.5rem;
 }
@@ -182,6 +187,10 @@ input[type="submit"] {
   height: 1.5rem;
   width: 1.5rem;
   margin-right: .5rem;
+}
+
+.warning {
+  margin: 0.5rem;
 }
 
 .minutes-seconds-div {
@@ -230,7 +239,7 @@ button {
   font-family: 'Montserrat', sans-serif;
 }
 
-.start-timer {
+.start-timer-button {
   height: 20rem;
   width: 20rem;
   background: none;
